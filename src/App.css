@@ -81,7 +81,8 @@ input:hover{
 }
 
 #btn:hover{
-  background-color: rgb(31, 122, 70);
+  /* background-color: rgb(31, 122, 70); */
+  background-image: linear-gradient(rgb(30, 153, 130), rgb(58, 180, 95));
   color: white;
 }
 #btn:active{
@@ -98,4 +99,48 @@ a{
 
 .humidity{
   display: block;
+}
+
+.blue{
+  margin: 2em auto;
+  border: 1px solid black;
+  border-radius: 20px;
+  width: 50vw;
+  /* background-color: rgb(38, 173, 178); */
+  color: white;
+  background-image: linear-gradient(rgb(68, 147, 192), rgb(162, 58, 235));
+  padding: 1.5em 0px;
+}
+
+.green{
+  margin: 2em auto;
+  border: 1px solid black;
+  border-radius: 20px;
+  width: 50vw;
+  /* background-color: rgb(38, 173, 178); */
+  color: white;
+  background-image: linear-gradient(rgb(103, 212, 83), rgb(9, 128, 120));
+  padding: 1.5em 0px;
+}
+
+.yellow{
+  margin: 2em auto;
+  border: 1px solid black;
+  border-radius: 20px;
+  width: 50vw;
+  /* background-color: rgb(38, 173, 178); */
+  color: white;
+  background-image: linear-gradient(rgb(181, 176, 44), rgb(185, 124, 39));
+  padding: 1.5em 0px;
+}
+
+.red{
+  margin: 2em auto;
+  border: 1px solid black;
+  border-radius: 20px;
+  width: 50vw;
+  /* background-color: rgb(38, 173, 178); */
+  color: white;
+  background-image: linear-gradient(rgb(223, 44, 44), rgb(209, 128, 35));
+  padding: 1.5em 0px;
 }

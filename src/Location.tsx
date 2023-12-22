@@ -26,11 +26,10 @@ const Location = ({ title }: titleType) => {
 
     const data = await fetch(apiurl)
     const res = await data.json();
-    setLoad(false);
-    setSearchData(res);
-    // console.log(res);
-    
-  }
+      setSearchData(res);
+      setLoad(false);
+      // console.log(res);
+    }
 
   useEffect(() => {
     search_func();
@@ -42,7 +41,7 @@ const Location = ({ title }: titleType) => {
       <input type="text" name="search_term" id="seach_term" placeholder='Search Location...' value={value} onChange={(e) => {setValue(e.target.value)}} />
       <button id='btn' onClick={()=>{search_func()}}>Search</button>
       {title &&<p>{title}</p>}
-      {load && <h1 style={{}}>Loadding...</h1>}
+      {load && <h1 className='Weather'>Loadding...</h1>}
       <Weather search_data={search_data} load={load}/>
     </div>
   )

@@ -64,11 +64,16 @@ const convert = () => {
   setIsCel((prev)=>!prev)
 }
 
+
+
+
   return (
-    <div className='Weather'>
-        <div className="blue">
+    <div>
         {search_data.cod === 200 ? (
-          <>
+          <div className={search_data.main.temp >= 1 && search_data.main.temp <= 15 ? ('green') : 
+          search_data.main.temp >= 16 && search_data.main.temp <= 30 ? ('blue') : 
+          search_data.main.temp >= 31 && search_data.main.temp <= 45 ? ('yellow') : 
+          search_data.main.temp >= 46 ? ('red') : ('Weather')}>
           <p>{search_data.name} <sup>{search_data.sys.country}</sup></p>
           <h1>{celToFah(search_data.main.temp)}{' '}{'| '} 
           <sup><span onClick={()=>convert()} style={{ cursor: 'pointer'}}>
@@ -82,13 +87,12 @@ const convert = () => {
             <p className='humidity'>{search_data.main.humidity} <span>humidity</span></p>
             <p className="speed">{search_data.wind.speed} <span>km/h</span></p>
           </div>
-          </>
+          </div>
         ) : 
-        load === false ? (
-          <div> Entered City is not available !!</div>
+        ( load === false )? (
+          <div className="Weather"> Entered City is not available !!</div>
         ):(<></>)
         }
-        </div>
       </div>
     )
 }
