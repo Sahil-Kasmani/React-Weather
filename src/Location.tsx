@@ -2,12 +2,7 @@ import { useState, useEffect } from 'react'
 import Weather from './Weather';
 
 
-
-interface titleType {
-  title?:string
-}
-
-const Location = ({ title }: titleType) => {
+const Location = () => {
 
   // const searchLocation = () => {
   //   console.log(value);
@@ -28,7 +23,7 @@ const Location = ({ title }: titleType) => {
     const res = await data.json();
       setSearchData(res);
       setLoad(false);
-      // console.log(res);
+      console.log(res);
     }
 
   useEffect(() => {
@@ -38,10 +33,11 @@ const Location = ({ title }: titleType) => {
 
   return (
     <div className='Location'>
+      <div className='center'>
       <input type="text" name="search_term" id="seach_term" placeholder='Search Location...' value={value} onChange={(e) => {setValue(e.target.value)}} />
       <button id='btn' onClick={()=>{search_func()}}>Search</button>
-      {title &&<p>{title}</p>}
-      {load && <h1 className='Weather'>Loadding...</h1>}
+      </div>
+      {load && <h1 className='Weather center'>Loadding...</h1>}
       <Weather search_data={search_data} load={load}/>
     </div>
   )
