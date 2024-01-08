@@ -86,13 +86,14 @@ const Weather = ({ search_data, load }: dataType) => {
                 </span></sup>
               </h1>
               <p className="forFlex">{search_data.weather[0].main}</p>
+              {/* <p>{info && info.address && info.address.state}</p> */}
             </div>
             <div className="container2">
-            <p>{date}</p>
-            <div className="container3">
-              <p><img src="/img/up-arrow.png" alt="Arrow up" height="12px"/> Temp max: {search_data.main.temp_max}</p>
-              <p style={{paddingLeft: '8px'}}> <img src="/img/arrow-down.png" alt="Arrow Down" width="15px" /> Temp min: {search_data.main.temp_min}</p>
-            </div>
+              <p>{date}</p>
+              <div className="container3">
+                <p><img src="/img/up-arrow.png" alt="Arrow up" height="12px" /> Temp max: {search_data.main.temp_max}</p>
+                <p style={{ paddingLeft: '8px' }}> <img src="/img/arrow-down.png" alt="Arrow Down" width="15px" /> Temp min: {search_data.main.temp_min}</p>
+              </div>
               <p className='humidity'>{search_data.main.humidity} <span>humidity</span></p>
               <p className="speed">{search_data.wind.speed} <span>km/h</span></p>
             </div>

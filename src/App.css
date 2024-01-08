@@ -1,80 +1,82 @@
-*{
+* {
   padding: 0;
   margin: 0;
 }
 
-body{
+body {
   /* display: flexbox;
   text-align: center;
   align-items: center;
   justify-content: center; */
   font-family: 'Mukta', sans-serif;
   /* background-image: linear-gradient(rgb(194, 225, 226), rgb(58, 162, 180)); */
-  
+
 }
 
 .App {
   padding: 4em 0px;
-  background-image: linear-gradient(rgba(21, 30, 24, 0.185),rgba(34, 30, 20, 0.426));
+  background-image: linear-gradient(rgba(21, 30, 24, 0.185), rgba(34, 30, 20, 0.426));
   height: 100vh;
 }
 
-.center{
+.center {
   text-align: center;
 }
 
-.mainContainer{
+.mainContainer {
   display: flex;
   /* flex-direction: row; */
   justify-content: space-between;
 }
 
-.container1{
+.container1 {
   width: 45%;
   padding: 30px 20px;
   /* border: 2px solid black; */
   box-sizing: border-box;
   text-align: center;
 }
-.container2{
+
+.container2 {
   width: 50%;
   padding: 30px 20px;
   /* border: 2px solid black; */
   box-sizing: border-box;
   text-align: center;
 }
-.container3{
+
+.container3 {
   display: flex;
   justify-content: center;
 }
 
-.forFlex{
+.forFlex {
   /* margin: 10px;
   border: 2px solid black; */
 }
 
 
 
-.container1 p{
+.container1 p {
   font-size: 3ex;
 }
 
-h2{
+h2 {
   font-size: 3.5em;
 }
 
-input{
+input {
   width: 25%;
   /* background-color: rgb(45, 195, 110); */
   font-size: large;
   height: 1.6rem;
 }
 
-input:hover{
+input:hover {
   border: solid black;
 }
 
-#btn{
+#btn {
   display: block;
   background-color: white;
   margin: 5px auto;
@@ -85,20 +87,20 @@ input:hover{
   border: solid green;
 }
 
-#btn:hover{
+#btn:hover {
   /* background-color: rgb(31, 122, 70); */
   background-image: linear-gradient(rgb(30, 149, 153), rgb(58, 180, 95));
   color: white;
 }
 
-#btn:active{
+#btn:active {
   /* background-color: rgb(45, 195, 110);
   color: white; */
   box-shadow: 2px 2px 5px rgb(58, 180, 95);
-  
+
 }
 
-.Weather{
+.Weather {
   margin: 2em auto;
   border: 1px solid black;
   border-radius: 20px;
@@ -109,29 +111,29 @@ input:hover{
   padding: 1.5em 0px;
 }
 
-.blue{
-  margin: 2em auto; 
-  border: 1px solid black;
-  border-radius: 20px;
-  width: 50vw;
-  /* background-color: rgb(38, 173, 178); */
-  color: white;
-  background-image: linear-gradient(rgb(92, 175, 222), rgb(120, 58, 235));
-  padding: 1.5em 0px;
-}
-
-.green{
+.blue {
   margin: 2em auto;
   border: 1px solid black;
   border-radius: 20px;
   width: 50vw;
   /* background-color: rgb(38, 173, 178); */
   color: white;
-  background-image: linear-gradient(rgb(103, 212, 83), rgb(9, 128, 120));
+  background-image: linear-gradient(rgb(72, 41, 186), rgb(39, 159, 163));
   padding: 1.5em 0px;
 }
 
-.yellow{
+.green {
+  margin: 2em auto;
+  border: 1px solid black;
+  border-radius: 20px;
+  width: 50vw;
+  /* background-color: rgb(38, 173, 178); */
+  color: white;
+  background-image: linear-gradient(rgb(72, 226, 110), rgb(9, 128, 76));
+  padding: 1.5em 0px;
+}
+
+.yellow {
   margin: 2em auto;
   border: 1px solid black;
   border-radius: 20px;
@@ -142,7 +144,7 @@ input:hover{
   padding: 1.5em 0px;
 }
 
-.red{
+.red {
   margin: 2em auto;
   border: 1px solid black;
   border-radius: 20px;
