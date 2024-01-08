@@ -3,10 +3,11 @@ import { useState } from "react";
 
 interface dataType {
   search_data: any;
-  load?: any
+  load?: any;
+  live_Location: boolean;
 }
 
-const Weather = ({ search_data, load }: dataType) => {
+const Weather = ({ search_data, load, live_Location }: dataType) => {
 
   //   const search_data:any = {
   //     "coord": {
@@ -79,6 +80,9 @@ const Weather = ({ search_data, load }: dataType) => {
           <div className="mainContainer">
 
             <div className="container1">
+              {live_Location ? (
+                <p className="abs"><img src="/img/red_circle.gif" alt="Red_Circle" height="12px" /> Live</p>
+              ) : ""}
               <p className="forFlex">{search_data.name} <sup>{search_data.sys.country}</sup></p>
               <h1 className="forFlex">{celToFah(search_data.main.temp)}{' '}{'| '}
                 <sup><span onClick={() => convert()} style={{ cursor: 'pointer' }}>
@@ -86,7 +90,6 @@ const Weather = ({ search_data, load }: dataType) => {
                 </span></sup>
               </h1>
               <p className="forFlex">{search_data.weather[0].main}</p>
-              {/* <p>{info && info.address && info.address.state}</p> */}
             </div>
             <div className="container2">
               <p>{date}</p>
