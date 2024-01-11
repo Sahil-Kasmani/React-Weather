@@ -5,9 +5,10 @@ interface dataType {
   search_data: any;
   load?: any;
   live_Location: boolean;
+  inputValue: string;
 }
 
-const Weather = ({ search_data, load, live_Location }: dataType) => {
+const Weather = ({ search_data, load, live_Location, inputValue }: dataType) => {
 
   //   const search_data:any = {
   //     "coord": {
@@ -105,7 +106,7 @@ const Weather = ({ search_data, load, live_Location }: dataType) => {
         </div>
       ) :
         (load === false) ? (
-          <div className="Weather center"> Entered City is not available !!</div>
+          <div className="Weather center">"{inputValue}" Entered City is not available !!</div>
         ) : (<></>)
       }
     </div>
