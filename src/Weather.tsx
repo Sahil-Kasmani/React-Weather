@@ -4,11 +4,9 @@ import { useState } from "react";
 interface dataType {
   search_data: any;
   load?: any;
-  live_Location: boolean;
-  inputValue: string;
 }
 
-const Weather = ({ search_data, load, live_Location, inputValue }: dataType) => {
+const Weather = ({ search_data, load }: dataType) => {
 
   //   const search_data:any = {
   //     "coord": {
@@ -68,47 +66,49 @@ const Weather = ({ search_data, load, live_Location, inputValue }: dataType) => 
   const d = new Date();
   const date = d.toDateString();
 
+  // console.log(search_data);
 
   return (
     <div className="main">
-      {search_data.cod === 200 ? (
-        <div className={search_data.main.temp >= 1 && search_data.main.temp <= 15 ? ('green') :
-          search_data.main.temp >= 16 && search_data.main.temp <= 30 ? ('blue') :
-            search_data.main.temp >= 31 && search_data.main.temp <= 45 ? ('yellow') :
-              search_data.main.temp >= 46 ? ('red') : ('Weather')}>
+      {/* {search_data && search_data.cod === 200 ? ( */}
+      <div className={search_data.temp >= 1 && search_data.temp <= 15 ? ('green') :
+        search_data.temp >= 16 && search_data.temp <= 30 ? ('blue') :
+          search_data.temp >= 31 && search_data.temp <= 45 ? ('yellow') :
+            search_data.temp >= 46 ? ('red') : ('Weather')}>
 
 
-          <div className="mainContainer">
+        <div className="mainContainer">
 
-            <div className="container1">
-              {live_Location ? (
-                <p className="abs"><img src="/img/red_circle.gif" alt="Red_Circle" height="12px" /> Live</p>
-              ) : ""}
-              <p className="forFlex">{search_data.name} <sup>{search_data.sys.country}</sup></p>
-              <h1 className="forFlex">{celToFah(search_data.main.temp)}{' '}{'| '}
-                <sup><span onClick={() => convert()} style={{ cursor: 'pointer' }}>
-                  {isCel ? '°F' : '°C'}
-                </span></sup>
-              </h1>
-              <p className="forFlex">{search_data.weather[0].main}</p>
-            </div>
-            <div className="container2">
-              <p>{date}</p>
-              <div className="container3">
-                <p><img src="/img/up-arrow.png" alt="Arrow up" height="12px" /> Temp max: {search_data.main.temp_max}</p>
-                <p style={{ paddingLeft: '8px' }}> <img src="/img/arrow-down.png" alt="Arrow Down" width="15px" /> Temp min: {search_data.main.temp_min}</p>
-              </div>
-              <p className='humidity'>{search_data.main.humidity} <span>humidity</span></p>
-              <p className="speed">{search_data.wind.speed} <span>km/h</span></p>
-            </div>
-
+          <div className="container1">
+            {search_data.isLive ? (
+              <p className="abs"><img src="/img/red_circle.gif" alt="Red_Circle" height="12px" /> Live</p>
+            ) : ""}
+            <p className="forFlex">{search_data.city} <sup>{search_data.country}</sup></p>
+            <h1 className="forFlex">{celToFah(search_data.temp)}{' '}{'| '}
+              <sup><span onClick={() => convert()} style={{ cursor: 'pointer' }}>
+                {isCel ? '°F' : '°C'}
+              </span></sup>
+            </h1>
+            <p className="forFlex">{search_data.type}</p>
           </div>
+          <div className="container2">
+            <p>{date}</p>
+            <div className="container3">
+              <p><img src="/img/up-arrow.png" alt="Arrow up" height="12px" /> Temp max: {search_data.max_temp}</p>
+              <p style={{ paddingLeft: '8px' }}> <img src="/img/arrow-down.png" alt="Arrow Down" width="15px" /> Temp min: {search_data.min_temp}</p>
+            </div>
+            <p className='humidity'>{search_data.humidity} <span>humidity</span></p>
+            <p className="speed">{search_data.speed} <span>km/h</span></p>
+          </div>
+
         </div>
-      ) :
+      </div>
+
+      {/* ) :
         (load === false) ? (
-          <div className="Weather center">"{inputValue}" Entered City is not available !!</div>
+          <div className="Weather center">{msg}</div>
         ) : (<></>)
-      }
+      } */}
     </div>
   )
 }
