@@ -115,13 +115,18 @@ const Location = () => {
         <div className='Location'>
             <div className='center search'>
                 <input type="text" name="search_term" id="seach_term" placeholder='Search Location...' value={inputValue} onChange={(e) => { setInputValue(e.target.value) }} />
-                <button id='btn' onClick={() => { search_func() }}>Search</button>
+                <button onClick={() => { search_func() }}><img src="/img/search_1.png" alt="button" height="30px" /></button>
+                {/* <button id='btn' onClick={() => { search_func() }}>Search</button> */}
             </div>
             {load && <h1 className=' center'><img src="/img/load.gif" alt="Loading" height="50px" /></h1>}
             {errMsg && <div className="Weather center">{errMsg}</div>}
-            {obj_Data.map((result, id) => (
-                <Weather key={id} search_data={result} load={load} />
-            ))}
+            {obj_Data.length > 0 && (
+                <div className='mainCon'>
+                    {obj_Data.map((result, id) => (
+                        <Weather key={id} search_data={result} load={load} />
+                    ))}
+                </div>
+            )}
         </div>
     )
 }

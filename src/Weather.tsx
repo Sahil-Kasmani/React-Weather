@@ -77,7 +77,7 @@ const Weather = ({ search_data, load }: dataType) => {
             search_data.temp >= 46 ? ('red') : ('Weather')}>
 
 
-        <div className="mainContainer">
+        <div className="Container">
 
           <div className="container1">
             {search_data.isLive ? (

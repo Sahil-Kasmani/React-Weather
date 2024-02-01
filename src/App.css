@@ -4,12 +4,9 @@
 }
 
 body {
-  /* display: flexbox;
-  text-align: center;
-  align-items: center;
-  justify-content: center; */
   font-family: 'Mukta', sans-serif;
   /* background-image: linear-gradient(rgb(194, 225, 226), rgb(58, 162, 180)); */
+  /* background-image: linear-gradient(rgba(21, 30, 24, 0.185), rgba(34, 30, 20, 0.426)); */
 
 }
 
@@ -21,9 +18,10 @@ body {
 
 .center {
   text-align: center;
+  align-items: center;
 }
 
-.mainContainer {
+.Container {
   display: flex;
   /* flex-direction: row; */
   justify-content: space-between;
@@ -51,13 +49,6 @@ body {
   justify-content: center;
 }
 
-.forFlex {
-  /* margin: 10px;
-  border: 2px solid black; */
-}
-
-
-
 .container1 p {
   font-size: 3ex;
 }
@@ -66,46 +57,11 @@ h2 {
   font-size: 3.5em;
 }
 
-input {
-  width: 25%;
-  /* background-color: rgb(45, 195, 110); */
-  font-size: large;
-  height: 1.6rem;
-}
-
-input:hover {
-  border: solid black;
-}
-
-#btn {
-  display: block;
-  background-color: white;
-  margin: 5px auto;
-  cursor: pointer;
-  height: 2em;
-  width: 9em;
-  font-size: 0.9rem;
-  border: solid green;
-}
-
-#btn:hover {
-  /* background-color: rgb(31, 122, 70); */
-  background-image: linear-gradient(rgb(30, 149, 153), rgb(58, 180, 95));
-  color: white;
-}
-
-#btn:active {
-  /* background-color: rgb(45, 195, 110);
-  color: white; */
-  box-shadow: 2px 2px 5px rgb(58, 180, 95);
-
-}
-
 .Weather {
   margin: 2em auto;
   border: 1px solid black;
   border-radius: 20px;
-  width: 50vw;
+  width: 30vw;
   /* background-color: rgb(38, 173, 178); */
   color: white;
   background-image: linear-gradient(rgb(30, 149, 153), rgb(58, 180, 95));
@@ -116,7 +72,7 @@ input:hover {
   margin: 2em auto;
   border: 1px solid black;
   border-radius: 20px;
-  width: 50vw;
+  width: 30vw;
   /* background-color: rgb(38, 173, 178); */
   color: white;
   background-image: linear-gradient(rgb(72, 41, 186), rgb(39, 159, 163));
@@ -127,7 +83,7 @@ input:hover {
   margin: 2em auto;
   border: 1px solid black;
   border-radius: 20px;
-  width: 50vw;
+  width: 30vw;
   /* background-color: rgb(38, 173, 178); */
   color: white;
   background-image: linear-gradient(rgb(72, 226, 110), rgb(9, 128, 76));
@@ -138,7 +94,7 @@ input:hover {
   margin: 2em auto;
   border: 1px solid black;
   border-radius: 20px;
-  width: 50vw;
+  width: 30vw;
   /* background-color: rgb(38, 173, 178); */
   color: white;
   background-image: linear-gradient(rgb(181, 176, 44), rgb(185, 124, 39));
@@ -149,7 +105,7 @@ input:hover {
   margin: 2em auto;
   border: 1px solid black;
   border-radius: 20px;
-  width: 50vw;
+  width: 30vw;
   /* background-color: rgb(38, 173, 178); */
   color: white;
   background-image: linear-gradient(rgb(223, 44, 44), rgb(209, 128, 35));
@@ -161,3 +117,55 @@ input:hover {
   top: -10px;
   cursor: pointer;
 }
+
+.search {
+  width: 100%;
+  max-width: 40%;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  padding: 0rem 1rem;
+  border-radius: 3rem;
+  background: #1f2123;
+  margin: 1.25rem auto;
+  box-shadow: 5px 5px 7px #2b2c2f, -5px -5px 7px #242922;
+}
+
+.search input {
+  flex: 1;
+  border: none;
+  font-size: 1.5rem;
+  font-weight: 500;
+  width: 20px;
+
+  outline: none;
+  color: white;
+  background: #1f2123;
+}
+
+.search img {
+  width: 35px;
+  height: 35px;
+  cursor: pointer;
+}
+
+button {
+  border-radius: 25px;
+  background-color: antiquewhite;
+}
+
+.mainCon {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.main {
+  padding: 0px 20px;
+}
+
+/* ggg */
