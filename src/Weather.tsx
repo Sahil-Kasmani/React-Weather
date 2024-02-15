@@ -3,10 +3,13 @@ import { useState } from "react";
 
 interface dataType {
   search_data: any;
-  load?: any;
+  LocalStorage: any;
+  addCity: any;
+  onDelete: any;
+
 }
 
-const Weather = ({ search_data, load }: dataType) => {
+const Weather = ({ search_data, LocalStorage, addCity, onDelete }: dataType) => {
 
   //   const search_data:any = {
   //     "coord": {
@@ -58,23 +61,31 @@ const Weather = ({ search_data, load }: dataType) => {
     return `${isCel ? Math.round(tempreture) + ' °C' : Math.round((tempreture * 9 / 5) + 32) + ' °F'}`;
   }
 
-
   const convert = () => {
     setIsCel((prev) => !prev)
   }
 
+
   const d = new Date();
   const date = d.toDateString();
+  const localC = Object.values(localStorage);
 
-  // console.log(search_data);
+
+  const hAdd = () => {
+    addCity(search_data.city);
+  }
+
+  const hDlt = () => {
+    onDelete(search_data.city);
+  }
+
 
   return (
     <div className="main">
-      {/* {search_data && search_data.cod === 200 ? ( */}
-      <div className={search_data.temp >= 1 && search_data.temp <= 15 ? ('green') :
-        search_data.temp >= 16 && search_data.temp <= 30 ? ('blue') :
-          search_data.temp >= 31 && search_data.temp <= 45 ? ('yellow') :
-            search_data.temp >= 46 ? ('red') : ('Weather')}>
+      <div className={Math.round(search_data.temp) >= 1 && Math.round(search_data.temp) <= 15 ? ('green') :
+        Math.round(search_data.temp) >= 16 && Math.round(search_data.temp) <= 30 ? ('blue') :
+          Math.round(search_data.temp) >= 31 && Math.round(search_data.temp) <= 45 ? ('yellow') :
+            Math.round(search_data.temp) >= 46 ? ('red') : ('Weather')}>
 
 
         <div className="Container">
@@ -92,10 +103,11 @@ const Weather = ({ search_data, load }: dataType) => {
             <p className="forFlex">{search_data.type}</p>
           </div>
           <div className="container2">
+            {(search_data.isLive) ? (" ") : (localC.includes(search_data.city)) ? <button className="DltBtn" onClick={() => { hDlt() }}>Delete</button> : <button className="AddBtn" onClick={() => hAdd()}>+ Add</button>}
             <p>{date}</p>
             <div className="container3">
-              <p><img src="/img/up-arrow.png" alt="Arrow up" height="12px" /> Temp max: {search_data.max_temp}</p>
-              <p style={{ paddingLeft: '8px' }}> <img src="/img/arrow-down.png" alt="Arrow Down" width="15px" /> Temp min: {search_data.min_temp}</p>
+              <p><img src="/img/up-arrow.png" alt="Arrow up" height="12px" />  <span>{search_data.max_temp}</span></p>
+              <p> <img src="/img/arrow-down.png" alt="Arrow Down" width="15px" />  <span>{search_data.min_temp}</span> </p>
             </div>
             <p className='humidity'>{search_data.humidity} <span>humidity</span></p>
             <p className="speed">{search_data.speed} <span>km/h</span></p>
@@ -104,11 +116,6 @@ const Weather = ({ search_data, load }: dataType) => {
         </div>
       </div>
 
-      {/* ) :
-        (load === false) ? (
-          <div className="Weather center">{msg}</div>
-        ) : (<></>)
-      } */}
     </div>
   )
 }

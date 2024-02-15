@@ -7,13 +7,15 @@ body {
   font-family: 'Mukta', sans-serif;
   /* background-image: linear-gradient(rgb(194, 225, 226), rgb(58, 162, 180)); */
   /* background-image: linear-gradient(rgba(21, 30, 24, 0.185), rgba(34, 30, 20, 0.426)); */
+  background-image: linear-gradient(rgba(26, 31, 27, 0.185), rgba(44, 42, 38, 0.426));
+  height: 100%;
 
 }
 
 .App {
   padding: 4em 0px;
-  background-image: linear-gradient(rgba(21, 30, 24, 0.185), rgba(34, 30, 20, 0.426));
-  height: 100vh;
+  /* background-image: linear-gradient(rgba(21, 30, 24, 0.185), rgba(34, 30, 20, 0.426)); */
+  height: 100%;
 }
 
 .center {
@@ -28,8 +30,8 @@ body {
 }
 
 .container1 {
-  width: 45%;
-  padding: 30px 20px;
+  width: 15vw;
+  padding: 30px 15px;
   /* border: 2px solid black; */
   box-sizing: border-box;
   text-align: center;
@@ -37,16 +39,27 @@ body {
 }
 
 .container2 {
-  width: 50%;
-  padding: 30px 20px;
+  width: 15vw;
+  padding: 20px 15px;
   /* border: 2px solid black; */
   box-sizing: border-box;
   text-align: center;
 }
 
+
 .container3 {
-  display: flex;
-  justify-content: center;
+  /* display: flex; */
+  /* justify-content: center; */
+  width: 5em;
+  margin: auto;
+}
+
+.container3 p {
+  border: 1.5px dashed black;
+  border-radius: 8px;
+  background-color: #dfe2e08f;
+  color: black;
+  margin: 0.2em 0;
 }
 
 .container1 p {
@@ -65,7 +78,7 @@ h2 {
   /* background-color: rgb(38, 173, 178); */
   color: white;
   background-image: linear-gradient(rgb(30, 149, 153), rgb(58, 180, 95));
-  padding: 1.5em 0px;
+  padding: 1em 0px;
 }
 
 .blue {
@@ -76,7 +89,7 @@ h2 {
   /* background-color: rgb(38, 173, 178); */
   color: white;
   background-image: linear-gradient(rgb(72, 41, 186), rgb(39, 159, 163));
-  padding: 1.5em 0px;
+  padding: 1em 0px;
 }
 
 .green {
@@ -86,8 +99,8 @@ h2 {
   width: 30vw;
   /* background-color: rgb(38, 173, 178); */
   color: white;
-  background-image: linear-gradient(rgb(72, 226, 110), rgb(9, 128, 76));
-  padding: 1.5em 0px;
+  background-image: linear-gradient(rgb(91 165 54 / 82%), rgb(41 174 133));
+  padding: 1em 0px;
 }
 
 .yellow {
@@ -98,7 +111,7 @@ h2 {
   /* background-color: rgb(38, 173, 178); */
   color: white;
   background-image: linear-gradient(rgb(181, 176, 44), rgb(185, 124, 39));
-  padding: 1.5em 0px;
+  padding: 1em 0px;
 }
 
 .red {
@@ -109,7 +122,7 @@ h2 {
   /* background-color: rgb(38, 173, 178); */
   color: white;
   background-image: linear-gradient(rgb(223, 44, 44), rgb(209, 128, 35));
-  padding: 1.5em 0px;
+  padding: 1em 0px;
 }
 
 .abs {
@@ -151,7 +164,7 @@ h2 {
   cursor: pointer;
 }
 
-button {
+.btn {
   border-radius: 25px;
   background-color: antiquewhite;
 }
@@ -168,4 +181,127 @@ button {
   padding: 0px 20px;
 }
 
-/* ggg */
+
+@media screen and (max-width: 900px) {
+
+  .container1 {
+    width: 25vw;
+    padding: 40px 5px;
+  }
+
+  .container2 {
+    width: 25vw;
+    padding: 40px 5px;
+
+  }
+
+  .Weather {
+    width: 40vw;
+    padding: 1.5em 10px;
+  }
+
+  .red {
+    width: 40vw;
+    padding: 1.5em 10px;
+  }
+
+  .yellow {
+    width: 40vw;
+    padding: 1.5em 10px;
+  }
+
+  .blue {
+    width: 40vw;
+    padding: 1.5em 10px;
+  }
+
+  .green {
+    width: 40vw;
+    padding: 1.5em 10px;
+  }
+
+  .Weather {
+    width: 40vw;
+    padding: 1.5em 10px;
+  }
+
+  body {
+    background-image: linear-gradient(rgba(26, 31, 27, 0.185), rgb(86, 178, 195));
+  }
+}
+
+
+
+@media screen and (max-width: 600px) {
+  .Container {
+    display: inline-block;
+  }
+
+  .container1 {
+    font-size: 1.4em;
+    width: 80vw;
+  }
+
+  .container2 {
+    font-size: 1.5em;
+    padding: 30px 32px;
+    width: 80vw;
+  }
+
+  .green {
+    width: 80vw;
+  }
+
+  .Weather {
+    width: 80vw;
+  }
+
+  .blue {
+    width: 80vw;
+  }
+
+  .yellow {
+    width: 80vw;
+  }
+
+  .red {
+    width: 80vw;
+  }
+
+}
+
+.DltBtn {
+  font-size: 1em;
+  border-radius: 100px;
+  cursor: pointer;
+  box-shadow: rgb(220 57 57) 0px 0px 7px 0, rgb(107 31 31) 0px 3px 10px, rgb(168 35 198 / 97%) 0px 4px 6px 0px;
+  border: 0;
+  padding: 3px 4px;
+  margin: 5px 0;
+  color: rgb(143 34 24 / 90%);
+  background-color: rgb(240 169 143 / 79%)
+    /* background-color: aqua; */
+}
+
+.DltBtn:hover {
+  box-shadow: rgb(220 57 57) 0px 0px 7px 0, rgb(207, 120, 120) 0px 3px 10px;
+  transform: scale(1.10) rotate(-1deg);
+}
+
+.AddBtn {
+  font-size: 1em;
+  border-radius: 100px;
+  cursor: pointer;
+  box-shadow: rgb(57 122 220) 0px -2px 10px 0, rgb(153 217 196) 0px 2px 8px 1px, rgb(53 31 58 / 97%) -2px 2px 10px 1px;
+  border: 0;
+  padding: 3px 4px;
+  margin: 5px 0;
+  color: rgb(45 116 104 / 90%);
+  background-color: rgb(52 245 186 / 79%)
+    /* background-color: aqua; */
+}
+
+.AddBtn:hover {
+  box-shadow: rgb(57 122 220) 0px -2px 10px 0, rgb(153 217 196) 0px 2px 8px 1px;
+  transform: scale(1.10) rotate(-1deg);
+}
