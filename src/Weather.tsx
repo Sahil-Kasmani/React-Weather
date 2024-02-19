@@ -3,13 +3,12 @@ import { useState } from "react";
 
 interface dataType {
   search_data: any;
-  LocalStorage: any;
   addCity: any;
   onDelete: any;
 
 }
 
-const Weather = ({ search_data, LocalStorage, addCity, onDelete }: dataType) => {
+const Weather = ({ search_data, addCity, onDelete }: dataType) => {
 
   //   const search_data:any = {
   //     "coord": {
