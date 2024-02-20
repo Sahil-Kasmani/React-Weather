@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react'
 import Weather from './Weather';
 
-interface new_Data {
+interface WeatherData {
     city: string;
     country: string;
     temp: number;
@@ -20,11 +20,12 @@ const Location = () => {
     // usestate Hooks
     const [inputValue, setInputValue] = useState("");
     const [load, setLoad] = useState<boolean>(true);
-    const [obj_Data, setObj_Data] = useState<new_Data[]>([]);
+    const [obj_Data, setObj_Data] = useState<WeatherData[]>([]);
     const [errMsg, setErrMsg] = useState("");
-    const [localData, setLocalData] = useState<new_Data[]>();
+    const [localData, setLocalData] = useState<WeatherData[]>();
     const [load2, setLoad2] = useState<boolean>(true);
     const [showLiveCalled, setShowLiveCalled] = useState<boolean>(true); // ShowLive Data
+    const [btnErrMsg, setBtnErrMsg] = useState<string>("")
 
 
 
@@ -33,9 +34,9 @@ const Location = () => {
     // URL Fetching :-
     const fetchData = async (apiurl: string, isLive: boolean) => {
         try {
+            setLoad(true)
             const res = await fetch(apiurl);
             const data: any = await res.json();
-            setLoad(false);
             if (data.cod === 200) {
                 setErrMsg("");
                 const isExist = obj_Data.map((item) => item.city).includes(data.name);
@@ -53,7 +54,7 @@ const Location = () => {
                         speed: data.wind.speed,
                         cod: data.cod,
                         isLive: isLive
-                    }
+                    },
                     ]);
                 }
                 else {
@@ -64,6 +65,8 @@ const Location = () => {
             }
         } catch (error) {
             console.log("Error occured here:", error);
+        } finally {
+            setLoad(false);
         }
     }
 
@@ -72,7 +75,6 @@ const Location = () => {
     const search_func = async (city: string) => {
         const url: string = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apikey}&units=metric`;
         fetchData(url, false);
-        console.log('search')
     }
 
     //Get weather with live location :-
@@ -83,9 +85,7 @@ const Location = () => {
 
             if (latitude !== undefined && longitude !== undefined) {
                 const url: string = `https://api.openweathermap.org/data/2.5/weather?lat=${latitude}&lon=${longitude}&appid=${apikey}&units=metric`;
-
                 fetchData(url, true)
-                console.log("live")
             }
         })
     }
@@ -96,35 +96,20 @@ const Location = () => {
     const localCity = Object.values(localStorage);
 
     const addCity = (cityName: string) => {
-        const apikey: string = "aa5baa63051313878b61092c4dfdb553";
-        const apiurl: string = `https://api.openweathermap.org/data/2.5/weather?q=${cityName}&appid=${apikey}&units=metric`;
+        localStorage.setItem(cityName, cityName);
+        const Exist = (localData?.some((item) => item.city === cityName));
 
-        if (!localCity.includes(cityName)) {
-            localStorage.setItem(cityName, cityName);
-            fetch(apiurl)
-                .then((res) => res.json())
-                .then((data) => {
-                    const addCity = {
-                        city: data.name,
-                        country: data.sys.country,
-                        temp: data.main.temp,
-                        max_temp: data.main.temp_max,
-                        min_temp: data.main.temp_min,
-                        type: data.weather[0].main,
-                        humidity: data.main.humidity,
-                        speed: data.wind.speed,
-                        cod: data.cod,
-                        isLive: null
-                    }
-                    setLocalData(prev => [...prev || [], addCity])
-                })
-            // console.log("Added", cityName);
+        if (!Exist) {
+            const cityDetails = obj_Data.find((data) => data.city === cityName)
+            if (cityDetails) {
+                setLocalData(prev => [...prev || [], cityDetails])
+            }
         } else {
-            console.log(cityName, "Already Exist");
+            setBtnErrMsg("City is already added")
         }
     }
 
-    const OnDelete = (city: string) => {
+    const onDelete = (city: string) => {
         localStorage.removeItem(city);
         const updateLocalData = localData?.filter((item) => item.city !== city);
         setLocalData(updateLocalData);
@@ -133,9 +118,8 @@ const Location = () => {
 
     const lStorageData = async () => {
         const fetchD = async () => {
-            const newValue: new_Data[] = [];
+            const newValue: WeatherData[] = [];
             for (const value of localCity) {
-                const apikey: string = "aa5baa63051313878b61092c4dfdb553";
                 const apiurl: string = `https://api.openweathermap.org/data/2.5/weather?q=${value}&appid=${apikey}&units=metric`;
 
                 try {
@@ -160,7 +144,6 @@ const Location = () => {
                 }
             };
             setLoad2(false);
-            console.log("New Value", newValue)
             setLocalData(newValue);
         };
         fetchD();
@@ -191,7 +174,7 @@ const Location = () => {
             {obj_Data.length > 0 && (
                 <div className='mainCon'>
                     {obj_Data.map((result, id) => (
-                        <Weather key={id} search_data={result} onDelete={OnDelete} addCity={addCity} />
+                        <Weather key={id} search_data={result} onDelete={onDelete} addCity={addCity} />
                     ))}
                 </div>
             )}
@@ -200,10 +183,11 @@ const Location = () => {
                 <h2 className='center'>Your Fav :</h2>
                 {load2 && <p className=' center'><img src="/img/load.gif" alt="Loading" height="50px" /></p>}
                 {!localCity || localCity.length === 0 && <p className='center Weather'>No fav city is available</p>}
+                {btnErrMsg && <p className='center Weather'>{btnErrMsg}</p>}
                 {localData && localData.length > 0 && (
                     <div className="mainCon">
                         {localData.map((res, id) => (
-                            <Weather key={id} search_data={res} onDelete={OnDelete} addCity={addCity} />
+                            <Weather key={id} search_data={res} onDelete={onDelete} addCity={addCity} />
                         ))}
                     </div>
                 )}
